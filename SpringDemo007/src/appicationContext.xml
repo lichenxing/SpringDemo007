@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xsi:schemaLocation="
+  http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+  <!--定义一个普通的Axe Bean的实例  -->
+  <bean id="AxeImpl" class="com.telek.service.AxeImpl"/>
+  <bean id="AxeSteelImpl" class="com.telek.service.AxeSteelImpl"/>
+  
+  <!--定义Chinese Bean  -->
+  <bean id="chinese" class="com.telek.service.Chinese">
+        <property name="schools">
+          <!--为List属性配置属性值  -->
+          <list>
+            <value>小学</value>
+            <value>中学</value>
+            <value>大学</value>
+          </list>
+        </property>
+        <property name="scores">
+         <!--为Map属性配置属性值  -->
+           <map>
+               <entry key="math"  value="80"/>
+               <entry key="english" value="30"/>
+               <entry key="pe" value="82"/>
+           </map>        
+        </property>
+        
+        <property name="phaseAxes">
+            <map>
+               <entry key="原始社会" value-ref="AxeImpl"/>
+               <entry key="农业社会" value-ref="AxeSteelImpl"/> 
+            </map>
+        </property>
+        
+        <property name="health">
+          <!-- <props>
+               <prop key="血压">正常</prop>
+               <prop key="身高">188</prop>
+               
+          </props> -->
+         <!--  <value>
+                pressure=normal
+                height=188
+          </value> 该方法的属性名属性值必须是英文或者数字-->
+        </property>
+        <property name="axes">
+                <set>
+                     <value>普通的字符串</value>    
+                     <bean class="com.telek.service.AxeSteelImpl"/>
+                     <ref local="AxeImpl"/>    
+                </set>
+        </property>
+        <property name="books">
+             <list>
+               <value>SpringBooks</value>
+               <value>others</value>
+               <value>JavaWeb</value>
+             </list>
+        </property>
+        
+        
+        
+        
+        
+        
+      
+  
+  </bean>
+
+ </beans>
